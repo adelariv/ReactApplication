@@ -2,9 +2,9 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import HomeScreen from './src/components/Home';
 import DetailsScreen from './src/components/Detail';
+import ModalScreen from './src/components/ModalScreen';
 
-
-const RootStack = StackNavigator(
+const MainStack = StackNavigator(
   {
     Home: {
       screen: HomeScreen,
@@ -15,6 +15,31 @@ const RootStack = StackNavigator(
   },
   {
     initialRouteName: 'Home',
+    /* The header config from HomeScreen is now here */
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
+  }
+);
+
+const RootStack = StackNavigator(
+  {
+    Main: {
+      screen: MainStack,
+    },
+    MyModal: {
+      screen: ModalScreen,
+    },
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none',
   }
 );
 
