@@ -8,7 +8,7 @@ class LogoTitle extends React.Component {
   render() {
     return (
       <Image
-        source={require('../img/ic_launcher.png')}
+        source={require('../../assets/ic_launcher.png')}
         style={{ width: 30, height: 30 }}
       />
     );

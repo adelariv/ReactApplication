@@ -1,11 +1,15 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
-import HomeScreen from './src/components/Home';
-import DetailsScreen from './src/components/Detail';
-import ModalScreen from './src/components/ModalScreen';
+import Login from './src/screens/Login';
+import HomeScreen from './src/screens/Home';
+import DetailsScreen from './src/screens/Detail';
+import ModalScreen from './src/screens/ModalScreen';
 
 const MainStack = StackNavigator(
   {
+    Login: {
+      screen: Login,
+    },
     Home: {
       screen: HomeScreen,
     },
@@ -14,11 +18,11 @@ const MainStack = StackNavigator(
     },
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Login',
     /* The header config from HomeScreen is now here */
     navigationOptions: {
       headerStyle: {
-        backgroundColor: '#f4511e',
+        backgroundColor: '#9b0476',
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
