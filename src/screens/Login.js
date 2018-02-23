@@ -8,6 +8,7 @@ import {
 
 import styles from "../styles";
 import rm from "../RemoteManager"
+import aStorage from "../AsyncStorageManager"
 class Login extends React.Component {
 
   constructor(props) {
@@ -16,6 +17,7 @@ class Login extends React.Component {
         rut: '222222222',
         password:'222222222',
         response: 'response',
+        tokenSaved: 'tokenSaved'
       };
   }
 
@@ -45,6 +47,13 @@ class Login extends React.Component {
           />
 
           <Text>{this.state.response}</Text>
+
+          <Button
+            title='show saved token'
+            onPress={this.showToken}
+          />
+
+          <Text>{this.state.tokenSaved}</Text>
         </ScrollView>
       )
   }
@@ -70,6 +79,7 @@ login = () => {
     .then((responseData) => {
       console.log(responseData);
       this.setState({response: responseData.token})
+      aStorage.saveAccessToken(responseData.token);
     })
     .catch(function(err) {
 
@@ -79,9 +89,18 @@ login = () => {
 
 }
 
+showToken = () => {
+  aStorage.getAccessToken()
+  .then(tokenSaved => this.setState({tokenSaved}));
+  // console.log(token);
+  // this.setState({tokenSaved: token});
+}
+
   _handlePress = () => {
     this.props.navigation.navigate('Login');
   }
+
+
 }
 
 
