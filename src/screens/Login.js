@@ -9,6 +9,7 @@ import {
 import styles from "../styles";
 import rm from "../RemoteManager"
 import aStorage from "../AsyncStorageManager"
+
 class Login extends React.Component {
 
   constructor(props) {
@@ -80,6 +81,7 @@ login = () => {
       console.log(responseData);
       this.setState({response: responseData.token})
       aStorage.saveAccessToken(responseData.token);
+      this.props.navigation.navigate('Home');
     })
     .catch(function(err) {
 
