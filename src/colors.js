@@ -1,5 +1,5 @@
 
-export default {
+export default class colors {
   black = '#66000000';
   white = '#fff';
   dark_gray_transparent = '#8058585A';

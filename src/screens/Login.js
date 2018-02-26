@@ -4,7 +4,8 @@ import {
    TextInput,
    View,
    Text,
-   Button } from 'react-native';
+   Button,
+   ActivityIndicator } from 'react-native';
 
 import styles from "../styles";
 import rm from "../RemoteManager"
@@ -18,7 +19,8 @@ class Login extends React.Component {
         rut: '222222222',
         password:'222222222',
         response: 'response',
-        tokenSaved: 'tokenSaved'
+        tokenSaved: 'tokenSaved',
+        isLoading: false
       };
   }
 
@@ -27,6 +29,13 @@ class Login extends React.Component {
   };
 
   render() {
+    if (this.state.isLoading) {
+     return (
+       <View style={styles.activityIndicator}>
+         <ActivityIndicator />
+       </View>
+     );
+   }
       return (
         <ScrollView style={{backgroundColor:'#fff'}}>
           <View style={styles.containerTop}>
@@ -60,6 +69,7 @@ class Login extends React.Component {
   }
 
 login = () => {
+  this.setState({isLoading: true})
   console.log(this.state.rut);
   console.log(this.state.password);
   const apiHost = 'http://api-mitorre.octano.cl'
@@ -79,9 +89,9 @@ login = () => {
     .then((response) => response.status == 200 ? response.json() : console.log(response))
     .then((responseData) => {
       console.log(responseData);
-      this.setState({response: responseData.token})
+      this.setState({response: responseData.token, isLoading: false})
       aStorage.saveAccessToken(responseData.token);
-      this.props.navigation.navigate('Home');
+      this.props.navigation.navigate('drawerStack')
     })
     .catch(function(err) {
 
@@ -94,12 +104,12 @@ login = () => {
 showToken = () => {
   aStorage.getAccessToken()
   .then(tokenSaved => this.setState({tokenSaved}));
-  // console.log(token);
+   console.log(tokenSaved);
   // this.setState({tokenSaved: token});
 }
 
   _handlePress = () => {
-    this.props.navigation.navigate('Login');
+    this.props.navigation.navigate('forgottenPasswordScreen');
   }
 
 

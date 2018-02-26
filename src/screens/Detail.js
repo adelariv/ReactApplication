@@ -6,18 +6,18 @@ class DetailsScreen extends React.Component {
   //   title: 'Details',
   // };
 
-  static navigationOptions = ({ navigation, navigationOptions}) => {
-    const { params } = navigation.state;
-
-    return {
-      title: params ? params.nameDetail : 'A Nested Details Screen',
-      /* These values are used instead of the shared configuration! */
-      headerStyle: {
-        backgroundColor: navigationOptions.headerTintColor,
-      },
-      headerTintColor: navigationOptions.headerStyle.backgroundColor,
-    }
-  };
+  // static navigationOptions = ({ navigation, navigationOptions}) => {
+  //   const { params } = navigation.state;
+  //
+  //   return {
+  //     title: params ? params.nameDetail : 'A Nested Details Screen',
+  //     /* These values are used instead of the shared configuration! */
+  //     headerStyle: {
+  //       backgroundColor: navigationOptions.headerTintColor,
+  //     },
+  //     headerTintColor: navigationOptions.headerStyle.backgroundColor,
+  //   }
+  // };
 
   render() {
     /* 2. Read the params from the navigation state */

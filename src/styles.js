@@ -20,6 +20,12 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginLeft: 10,
     marginRight: 10,
-  }
+  },
+  activityIndicator : {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+     alignItems: 'center'
+   }
 });
 export default styles;

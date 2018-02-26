@@ -1,32 +1,41 @@
 import React from 'react';
-import { Button, View, Text } from 'react-native';
+import { Button, View, Text, Image, StyleSheet } from 'react-native';
 import LogoTitle from '../components/LogoTitle';
 
 class HomeScreen extends React.Component {
-  static navigationOptions = ({ navigation }) => {
-   const params = navigation.state.params || {};
-
-    // title: 'Home',
-    // headerTitle instead of title
-    return {
-    headerTitle: <LogoTitle />,
-    headerRight: (
-      // <Button
-      //   onPress={() => alert('This is a button!')}
-      //   title="Info"
-      //   color="#fff"
-      // />
-      <Button onPress={params.increaseCount} title="+1" color="#fff" />
-    ),
-    headerLeft: (
-        <Button
-          onPress={() => navigation.navigate('MyModal')}
-          title="Info"
-          color="#fff"
-        />
-      ),
-  };
-  };
+  static navigationOptions = {
+   drawerLabel: 'Home',
+   drawerIcon: ({ tintColor }) => (
+     <Image
+       source={require('../../assets/ic_launcher.png')}
+       style={[styles.icon, {tintColor: '#fff'}]}
+     />
+   ),
+ };
+  // static navigationOptions = ({ navigation }) => {
+  //  const params = navigation.state.params || {};
+  //
+  //   // title: 'Home',
+  //   // headerTitle instead of title
+  //   return {
+  //   headerTitle: <LogoTitle />,
+  //   headerRight: (
+  //     // <Button
+  //     //   onPress={() => alert('This is a button!')}
+  //     //   title="Info"
+  //     //   color="#fff"
+  //     // />
+  //     <Button onPress={params.increaseCount} title="+1" color="#fff" />
+  //   ),
+  //   headerLeft: (
+  //       <Button
+  //         onPress={() => navigation.navigate('MyModal')}
+  //         title="Info"
+  //         color="#fff"
+  //       />
+  //     ),
+  // };
+  // };
   componentWillMount() {
       this.props.navigation.setParams({ increaseCount: this._increaseCount });
   }
@@ -58,5 +67,12 @@ class HomeScreen extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  icon: {
+    width: 24,
+    height: 24,
+  },
+});
 
 export default HomeScreen;
