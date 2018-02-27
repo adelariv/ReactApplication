@@ -3,39 +3,22 @@ import { Button, View, Text, Image, StyleSheet } from 'react-native';
 import LogoTitle from '../components/LogoTitle';
 
 class HomeScreen extends React.Component {
-  static navigationOptions = {
-   drawerLabel: 'Home',
-   drawerIcon: ({ tintColor }) => (
-     <Image
-       source={require('../../assets/ic_launcher.png')}
-       style={[styles.icon, {tintColor: '#fff'}]}
-     />
-   ),
- };
-  // static navigationOptions = ({ navigation }) => {
-  //  const params = navigation.state.params || {};
-  //
-  //   // title: 'Home',
-  //   // headerTitle instead of title
-  //   return {
-  //   headerTitle: <LogoTitle />,
-  //   headerRight: (
-  //     // <Button
-  //     //   onPress={() => alert('This is a button!')}
-  //     //   title="Info"
-  //     //   color="#fff"
-  //     // />
-  //     <Button onPress={params.increaseCount} title="+1" color="#fff" />
-  //   ),
-  //   headerLeft: (
-  //       <Button
-  //         onPress={() => navigation.navigate('MyModal')}
-  //         title="Info"
-  //         color="#fff"
-  //       />
-  //     ),
-  // };
-  // };
+
+  static navigationOptions = ({ navigation }) => {
+   const params = navigation.state.params || {};
+    return {
+    headerTitle: "Octano centers",
+    headerRight: (
+      <Button
+        onPress={() => alert('This is a button!')}
+        title="Info"
+        color="#fff"
+      />
+      //{/* <Button onPress={params.increaseCount} title="+1" color="#fff" /> */}
+    ),
+
+   };
+  };
   componentWillMount() {
       this.props.navigation.setParams({ increaseCount: this._increaseCount });
   }
