@@ -2,8 +2,7 @@ import React from 'react';
 import { StackNavigator, DrawerNavigator } from 'react-navigation';
 import { Image, TouchableOpacity } from 'react-native'
 import SideMenu from '../components/SideMenu/SideMenu'
-import colors from '../colors';
-import HomeScreen from '../screens/Home';
+import HomeScreen from '../screens/HomeScreen/Home';
 import DetailsScreen from '../screens/Detail';
 import ModalScreen from '../screens/ModalScreen';
 
@@ -32,7 +31,7 @@ const DrawerNavigation = StackNavigator({
     title: 'Octano',
     headerLeft: (
        <TouchableOpacity onPress={() => navigation.navigate("DrawerToggle")}>
-          <Image source={require('../../assets/hamburger.png')} style={{ width: 30, height: 30}} />
+          <Image source={require('../../assets/hamburger.png')} style={{ width: 30, height: 30, marginLeft: 8}} />
       </TouchableOpacity>
       )
   })

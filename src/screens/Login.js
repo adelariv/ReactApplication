@@ -104,8 +104,6 @@ login = () => {
 showToken = () => {
   aStorage.getAccessToken()
   .then(tokenSaved => this.setState({tokenSaved}));
-   console.log(tokenSaved);
-  // this.setState({tokenSaved: token});
 }
 
   _handlePress = () => {
